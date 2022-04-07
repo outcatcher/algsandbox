@@ -17,3 +17,18 @@ func iterMerge(src1, src2 []int) []int {
 	}
 	return res
 }
+
+func appendMerge(src1, src2 []int) []int {
+	return append(src1, src2...)
+}
+
+func appendStupidMerge(src1, src2 []int) []int {
+	var res []int
+	for s1 := range src1 {
+		res = append(res, s1)
+	}
+	for s2 := range src2 {
+		res = append(res, s2)
+	}
+	return res
+}

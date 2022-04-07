@@ -51,12 +51,14 @@ func TestMerge(t *testing.T) {
 type mergeFunc func([]int, []int) []int
 
 func BenchmarkMerge(b *testing.B) {
-	max := 500000
+	max := 5000000
 	step := max / 2
 
 	cases := map[string]mergeFunc{
-		"copy": simpleMerge,
-		"iter": iterMerge,
+		"copy":          simpleMerge,
+		"iter":          iterMerge,
+		"append":        appendMerge,
+		"append_stupid": appendStupidMerge,
 	}
 	for name, f := range cases {
 		for size := step; size <= max; size += step {
