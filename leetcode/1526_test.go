@@ -47,9 +47,7 @@ func TestMinNumber(t *testing.T) {
 	for expected, v := range cases {
 		t.Run(fmt.Sprintf("minimal-%d", expected), func(t *testing.T) {
 			count := minNumberOperations(v)
-			if count != expected {
-				t.Fatalf("expected %d operations, got %d", expected, count)
-			}
+			assertEqual(t, expected, count)
 		})
 	}
 }
