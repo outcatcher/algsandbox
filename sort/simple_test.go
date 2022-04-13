@@ -1,7 +1,6 @@
 package sort
 
 import (
-	"runtime/debug"
 	"testing"
 )
 
@@ -27,10 +26,9 @@ func TestReplaces(t *testing.T) {
 func BenchmarkSimple(b *testing.B) {
 	m := 15000
 
-	// benchSort(b, "stupid", stupid, m) // no-no-no, not running this one
-	debug.SetGCPercent(-1)
+	benchSort(b, "stupid", stupid, m) // no-no-no, not running this one
 	benchSort(b, "bubble", bubble, m)
-	// benchSort(b, "shaker", shaker, m)
-	// benchSort(b, "selection", selection, m)
-	// benchSort(b, "insertion", insertion, m)
+	benchSort(b, "shaker", shaker, m)
+	benchSort(b, "selection", selection, m)
+	benchSort(b, "insertion", insertion, m)
 }

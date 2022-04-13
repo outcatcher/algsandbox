@@ -38,7 +38,6 @@ func checkSort(t *testing.T, src []int, f sortFunc) {
 }
 
 const (
-	benchSize  = 10000
 	iterations = 3
 )
 
@@ -48,6 +47,7 @@ func benchSort(b *testing.B, name string, f sortFunc, maxSize int) {
 	for i := step; i <= maxSize; i += maxSize / iterations {
 		data := randomSlice(i)
 		b.Run(fmt.Sprintf("%s (%d)", name, i), func(b *testing.B) {
+			b.ResetTimer()
 			f(data)
 		})
 	}
