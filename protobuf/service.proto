@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package protobuf;
+
+option go_package = "github.com/outcatcher/algsandbox/protobuf";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+
+message Ok {
+  string ok = 1;
+}
+
+message Something {
+  optional Ok ok = 1;
+  string reason = 2;
+  repeated int32 no = 3;
+  google.protobuf.Any any = 4;
+}
+
+service TestService {
+  rpc Echo(google.protobuf.Empty) returns (Ok);
+  rpc Smth(google.protobuf.Empty) returns (Something);
+}
