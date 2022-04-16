@@ -6,35 +6,16 @@ import (
 )
 
 func minNumberOperations(target []int) int {
-	size := len(target)
-
-	count := 0
-	for {
-		subsets := 0
-		lastMoved := false
-		for i := 0; i < size; i++ {
-			v := target[i]
-			if v == 0 {
-				if lastMoved {
-					subsets++
-				}
-				lastMoved = false
-				continue
-			}
-			lastMoved = true
-			target[i] = v - 1
+	operations := 0
+	prev := 0
+	for i := 0; i < len(target); i++ {
+		this := target[i]
+		if add := this - prev; add > 0 {
+			operations += add
 		}
-		if lastMoved { // when the last element is moved, there is at least one subset
-			subsets++
-		}
-		if subsets == 0 { // no changes to the list
-			break
-		}
-		count += subsets
-		fmt.Printf("Moved to %v in %d steps\n", target, subsets)
+		prev = this
 	}
-	fmt.Println()
-	return count
+	return operations
 }
 
 func TestMinNumber(t *testing.T) {
