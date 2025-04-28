@@ -1,10 +1,12 @@
 module github.com/outcatcher/algsandbox
 
-go 1.18
+go 1.22
+
+toolchain go1.24.2
 
 require (
 	google.golang.org/grpc v1.56.3
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.36.6
 )
 
 require (
